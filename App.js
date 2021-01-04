@@ -27,11 +27,17 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     SplashScreen.hide();
+  //   }, 1000);
+  // }, []);
+  // useEffect(() => {
+  //   SplashScreen.hide();
+  // }, []);
   useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 2000);
-  }, []);
+    SplashScreen.hide();
+  });
 
   return (
     <>
