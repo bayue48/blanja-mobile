@@ -3,18 +3,28 @@
     [
       "module-resolver",
       {
-        "cwd": "babelrc",
         "root": ["./src"],
-        "extensions": [".js", ".ios.js", ".android.js"],
         "alias": {
           "_assets": "./src/assets",
           "_components": "./src/components",
           "_redux": "./src/redux",
           "_routes": "./src/routes",
+          "_navigations": "./src/navigations",
+          "_services": "./src/services",
           "_screens": "./src/screens",
           "_styles": "./src/styles",
           "_utils": "./src/utils"
         }
+      }
+    ], 
+    [
+      "module:react-native-dotenv", {
+        "moduleName": "@env",
+        "path": ".env",
+        "blacklist": null,
+        "whitelist": null,
+        "safe": false,
+        "allowUndefined": true
       }
     ]
   ]

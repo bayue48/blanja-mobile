@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "602698897248",
+    "firebase_url": "https://red-vhasqu.firebaseio.com",
+    "project_id": "red-vhasqu",
+    "storage_bucket": "red-vhasqu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602698897248:android:0d0fe9a630576e92493005",
+        "android_client_info": {
+          "package_name": "com.blanjamobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602698897248-snq3ne4vnhufqiehbaqug79qt2h5stk7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcOSRB41GvNfXBvg8RPmyy7Nb8IHqYjdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602698897248-edjkfpgertslnt814anhnqn9ljqn5k8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

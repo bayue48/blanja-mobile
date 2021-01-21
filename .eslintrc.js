@@ -11,6 +11,8 @@ module.exports = {
           _components: './src/components',
           _redux: './src/redux',
           _routes: './src/routes',
+          _navigations: './src/navigations',
+          _services: './src/services',
           _screens: './src/screens',
           _styles: './src/styles',
           _utils: './src/utils',
