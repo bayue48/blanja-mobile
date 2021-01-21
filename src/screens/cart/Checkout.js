@@ -5,7 +5,7 @@ import CardAdress from '../../components/CardAdress'
 import { orderItems } from '../../utils/redux/ActionCreators/cart'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { REACT_APP_BASE_URL } from "@env"
+import { API_URL } from "@env"
 import PushNotification from 'react-native-push-notification';
 import { showNotification } from '../../services/notif';
 
@@ -71,9 +71,9 @@ class Checkout extends React.Component {
                     total: this.props.cart.totalAmount + shippingPrice,
                     trackingNumber: `XXXXXXXXXXXXXXX-0${this.props.cart.trxId}`
                 }
-                axios.post(REACT_APP_BASE_URL + '/transactions', newTrx)
+                axios.post(API_URL + 'transactions', newTrx)
                     .then((result) => {
-                        axios.post(REACT_APP_BASE_URL + '/transactions/itemOrder', this.props.cart.mybag)
+                        axios.post(API_URL + 'transactions/itemOrder', this.props.cart.mybag)
                             .then((res) => {
                                 showNotification('Notification', 'Checkout Succes', channel);
                                 this.props.navigation.navigate('Success')
@@ -89,7 +89,7 @@ class Checkout extends React.Component {
 
     componentDidMount = () => {
         this._unsubscribe = this.props.navigation.addListener('focus', () => {
-            axios.get(REACT_APP_BASE_URL + `/address/get/${this.props.address.selectedAddress}`)
+            axios.get(API_URL + `/address/get/${this.props.address.selectedAddress}`)
                 .then(({ data }) => {
                     this.setState({
                         address: data.data

@@ -24,7 +24,7 @@ const bagReducer = (
               : items
           )
           : [...prevstate.mybag, { ...action.data }],
-        totalAmount: prevstate.totalAmount + (newItem.price)
+        totalAmount: prevstate.totalAmount + (newItem.product_price)
 
       }
     case "INC_QTY":
@@ -36,7 +36,7 @@ const bagReducer = (
       return {
         ...prevstate,
         mybag: IncreaseQty,
-        totalAmount: prevstate.totalAmount + action.data.price
+        totalAmount: prevstate.totalAmount + action.data.product_price
       }
 
     case "DEC_QTY":
@@ -48,7 +48,7 @@ const bagReducer = (
       return {
         ...prevstate,
         mybag: DecreaseQty,
-        totalAmount: prevstate.totalAmount - action.data.price
+        totalAmount: prevstate.totalAmount - action.data.product_price
       }
 
     case 'ORDER_ITEMS':
@@ -69,7 +69,7 @@ const bagReducer = (
       return {
         ...prevstate,
         mybag: itemAfterRemove,
-        totalAmount: prevstate.totalAmount - action.data.price
+        totalAmount: prevstate.totalAmount - action.data.product_price
       }
       case "TOTAL_PAYMENT":
         return {
