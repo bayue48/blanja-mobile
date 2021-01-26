@@ -35,7 +35,7 @@ class Home extends React.Component {
   }
 
   getPopularProducts = () => {
-    axios.get(API_URL + 'products/sort?sortBy=product_rating').then(({ data }) => {
+    axios.get(API_URL + 'products/sort?sortBy=product_rating&orderBy=desc').then(({ data }) => {
       // console.log(data)
       this.setState({
         products: data.data.products,
@@ -59,6 +59,7 @@ class Home extends React.Component {
     // console.log(API_URL)
     return (
       <Container>
+        <ScrollView vertical={true}>
         <View style={{ height: 180 }}>
           <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../assets/images/header.png')}>
             <View style={{ position: 'absolute', left: 0, bottom: 0, marginBottom: 15, marginLeft: 10 }}>
@@ -89,7 +90,6 @@ class Home extends React.Component {
 
         <Grid>
           <SafeAreaView>
-            <ScrollView vertical={true}>
               <View>
                 <Text style={styles.title}>New</Text>
                 <TouchableOpacity onPress={() => {
@@ -140,10 +140,9 @@ class Home extends React.Component {
                   </ScrollView>
                 </SafeAreaView>
               </Row>
-            </ScrollView>
           </SafeAreaView>
         </Grid>
-
+        </ScrollView>
       </Container>
     );
   }

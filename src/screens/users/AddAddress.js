@@ -96,7 +96,7 @@ class AddAddress extends Component {
                     <View style={{ height: 75, width: 340, backgroundColor: 'white', borderRadius: 10, marginTop: 20, marginBottom: 20 }}>
                         <Item floatingLabel style={{ marginTop: 10, marginLeft: 15, marginRight: 15 }}>
                             <Label style={{ fontSize: 14, color: 'gray' }}>Recipient Telephone Number</Label>
-                            <Input name="number" value={phone} onChangeText={(text) => { this.setState({ phone: number }) }} />
+                            <Input name="number" value={phone} onChangeText={(text) => { this.setState({ phone: text }) }} />
                         </Item>
                     </View>
 

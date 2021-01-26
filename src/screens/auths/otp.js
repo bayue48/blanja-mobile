@@ -8,7 +8,7 @@ import {
     Image
 } from 'react-native';
 import axios from 'axios';
-import { REACT_APP_BASE_URL } from "@env"
+import { API_URL } from "@env"
 
 
 class Otp extends React.Component {
@@ -20,7 +20,7 @@ class Otp extends React.Component {
 
     checkOTP = () => {
         if(this.state.otp !== ''){
-            axios.get(REACT_APP_BASE_URL+'/auth/otp/')
+            axios.get(API_URL+'/auth/otp/')
             .then(({data}) =>{
                 alert(data.message)
                 this.props.navigation.navigate('ResetPassword')

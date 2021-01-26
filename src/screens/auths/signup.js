@@ -23,20 +23,20 @@ class Signup extends React.Component {
                 errorForm: 'Semua kolom harus diisi'
             })
         } else {
-            let data = {
+            let datas = {
                 email: this.state.email,
                 name: this.state.name,
                 password: this.state.password,
             }
             if (this.state.btnState) {
                 data = {
-                    ...data,
+                    ...datas,
                     level_id: 1,
                     store: this.state.store
                 }
             } else {
                 data = {
-                    ...data,
+                    ...datas,
                     level_id: 2,
                     store: ''
                 }
@@ -115,7 +115,7 @@ class Signup extends React.Component {
 
                 <Content>
                     <View style={styles.rowTitle}>
-                        <Text style={styles.textTitle}>Signup</Text>
+                        <Text style={styles.textTitle}>Register</Text>
                     </View>
                     <View style={styles.btnWrap}>
                         <Button bordered danger full style={styles.btnSelector} onPress={() => { this.setState({ btnState: !btnState }) }}>
@@ -132,7 +132,7 @@ class Signup extends React.Component {
                             <Text> Already have an account?</Text>
                         </TouchableOpacity>
                         <Button danger full rounded style={{ marginTop: 15 }} onPress={this.signup}>
-                            <Text style={{ color: '#fff' }}> SIGN UP </Text>
+                            <Text style={{ color: '#fff' }}> REGISTER </Text>
                         </Button>
                         <Text style={{ color: 'red', fontWeight: 'bold', textAlign: 'center' }}>{this.state.errorForm}</Text>
                     </View>

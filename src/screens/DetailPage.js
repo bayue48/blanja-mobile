@@ -8,6 +8,7 @@ import axios from 'axios'
 import { API_URL } from "@env"
 import { addItems } from '../utils/redux/ActionCreators/cart'
 import { connect } from 'react-redux'
+import Nav from '../components/BottomNav'
 
 class DetailPage extends Component {
     constructor(props) {
@@ -219,6 +220,7 @@ class DetailPage extends Component {
                                 <Button danger full rounded style={{ marginTop: 15 }} onPress={this.addToCart}>
                                     <Text style={{ color: '#fff' }}> Add to Cart </Text>
                                 </Button>
+                            <Nav navigation={this.props.navigation} />
                             </Container>
                         )
                     })

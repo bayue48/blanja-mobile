@@ -5,6 +5,10 @@ import { API_URL } from "@env"
 import axios from 'axios'
 import ImagePicker from 'react-native-image-crop-picker';
 import { connect } from 'react-redux'
+import PushNotification from 'react-native-push-notification';
+import { showNotification } from '../../services/LocalPushController';
+
+const channel = 'notif';
 
 class AddProduct extends React.Component {
     constructor(props) {
@@ -29,6 +33,8 @@ class AddProduct extends React.Component {
             product_category: e
         })
     }
+
+    
 
     setCondition = (e) => {
         this.setState({
@@ -113,12 +119,43 @@ class AddProduct extends React.Component {
             .then((data) => {
                 console.log(data.data);
                 alert('produk berhasil ditambahkan')
+                showNotification('Notification', 'Sukses Tambah Produk', channel);
                 this.props.navigation.navigate('ListProduct')
             })
             .catch((err) => {
                 console.log('error disini');
                 console.log(err);
             });
+    }
+
+    componentDidMount = () => {
+        // this._unsubscribe = this.props.navigation.addListener('focus', () => {
+        //     axios.get(REACT_APP_BASE_URL + `/address/get/${this.props.address.selectedAddress}`)
+        //         .then(({ data }) => {
+        //             this.setState({
+        //                 address: data.data
+        //             })
+        //         }).catch(({ response }) => {
+        //             console.log(response.data)
+        //         })
+        // })
+
+        PushNotification.createChannel(
+            {
+                channelId: 'notif',
+                channelName: 'My Notification channel',
+                channelDescription: 'A channel to categories your notification',
+                soundName: 'default',
+                importance: 4,
+                vibrate: true,
+            },
+            (created) => console.log(`createchannel returned '${created}'`),
+        );
+        // code to run on component mount
+
+        PushNotification.getChannels((channel_ids) => {
+            console.log(channel_ids);
+        });
     }
 
     render() {
@@ -145,15 +182,15 @@ class AddProduct extends React.Component {
                         </Button>
                     </Left>
                     <Body >
-                        <Title style={{ color: 'black', fontWeight: 'bold' }}>Add Product for Sale</Title>
+                        <Title style={{ color: 'black', fontWeight: 'bold' }}>Add Product</Title>
                     </Body>
                 </Header>
 
                 <Content>
                     <ScrollView>
-                        <View style={styles.rowTitle}>
+                        {/* <View style={styles.rowTitle}>
                             <Text style={styles.textTitle}>Add Product</Text>
-                        </View>
+                        </View> */}
                         <View >
                             <Form>
                                 <Item floatingLabel>

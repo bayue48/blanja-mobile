@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import { API_URL } from "@env"
 import PushNotification from 'react-native-push-notification';
-import { showNotification } from '../../services/notif';
+// import { showNotification } from '../../services/notif';
 
 const shippingPrice = 15000;
 const channel = 'notif';
@@ -63,7 +63,7 @@ class Checkout extends React.Component {
             }
             if (this.props.dispatch(orderItems(Order))) {
                 const newTrx = {
-                    user_id: this.props.auth.id,
+                    user_id: 1,
                     TrxId: Order.trxId,
                     payment: payment,
                     address: this.props.address.selectedAddress,

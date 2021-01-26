@@ -60,7 +60,6 @@ class Search extends Component {
                     })
                 }).catch(err => {
                     console.log(err)
-                    alert('barang tidak ditemukan')
                 })
         }
     }
@@ -109,7 +108,7 @@ class Search extends Component {
                         </ScrollView>
 
                     </Content>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+                    {/* <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
                             <Button full bordered light style={styles.button} onPress={this.prevPage}>
                                 <Text style={styles.btnSub}>{`<<<`}</Text>
                             </Button>
@@ -119,7 +118,7 @@ class Search extends Component {
                             <Button full bordered light style={styles.button} onPress={this.nextPage}>
                                 <Text style={styles.btnSub}>{`>>>`}</Text>
                             </Button>
-                        </View>
+                        </View> */}
                 </Container>
             </>
         );
