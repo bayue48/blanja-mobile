@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SplashScreen from 'react-native-splash-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -10,29 +10,29 @@ import Home from './screens/Home';
 import Profile from './screens/users/Profile';
 import Login from './screens/auths/login';
 import Signup from './screens/auths/signup';
-import Forgot from './screens/auths/forgot'
-import Otp from './screens/auths/otp'
-import ResetPassword from './screens/auths/reset_password'
+import Forgot from './screens/auths/forgot';
+import Otp from './screens/auths/otp';
+import ResetPassword from './screens/auths/reset_password';
 import Shop from './screens/Shop';
-import Category from './screens/Category'
-import DetailPage from './screens/DetailPage'
+import Category from './screens/Category';
+import DetailPage from './screens/DetailPage';
 import Bag from './screens/cart/MyBag';
-import Checkout from './screens/cart/Checkout'
-import Success from './screens/cart/Success'
-import Order from './screens/users/MyOrder'
-import Shipping from './screens/users/ShippingAdress'
-import Setting from './screens/users/Settings'
-import ChangeAddress from './screens/users/ChangeAddress'
-import AddAddress from './screens/users/AddAddress'
-import DetailOrders from './screens/users/DetailOrder'
-import Filter from './screens/Filter'
-import Notification from './screens/Notification'
-import UserStore from './screens/users/UserStore'
-import ListProduct from './screens/users/ListProduct'
-import AddProduct from './screens/users/AddProduct'
-import EditProduct from './screens/users/EditProduct'
-import Search from './screens/Search'
-import Review from './screens/users/ProductReview'
+import Checkout from './screens/cart/Checkout';
+import Success from './screens/cart/Success';
+import Order from './screens/users/MyOrder';
+import Shipping from './screens/users/ShippingAdress';
+import Setting from './screens/users/Settings';
+import ChangeAddress from './screens/users/ChangeAddress';
+import AddAddress from './screens/users/AddAddress';
+import DetailOrders from './screens/users/DetailOrder';
+import Filter from './screens/Filter';
+import Notification from './screens/Notification';
+import UserStore from './screens/users/UserStore';
+import ListProduct from './screens/users/ListProduct';
+import AddProduct from './screens/users/AddProduct';
+import EditProduct from './screens/users/EditProduct';
+import Search from './screens/Search';
+import Review from './screens/users/ProductReview';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -41,8 +41,8 @@ const MyTabs = () => {
   return (
     <Tab.Navigator
       headerMode="none"
-      sceneContainerStyle={{ borderWidth: 0 }}
-      barStyle={{ borderTopLeftRadius: 20 }}
+      sceneContainerStyle={{borderWidth: 0}}
+      barStyle={{borderTopLeftRadius: 20}}
       tabBarOptions={{
         activeTintColor: '#DB3022',
         style: {
@@ -54,7 +54,7 @@ const MyTabs = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="home" size={25} color={color} />;
           },
         }}
@@ -63,7 +63,7 @@ const MyTabs = () => {
         name="Shop"
         component={ShopPage}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="shopping-cart" size={25} color={color} />;
           },
         }}
@@ -72,7 +72,7 @@ const MyTabs = () => {
         name="MyBag"
         component={MyBag}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="shopping-bag" size={25} color={color} />;
           },
         }}
@@ -81,7 +81,7 @@ const MyTabs = () => {
         name="Favorite"
         component={Login}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="heart" size={25} color={color} />;
           },
         }}
@@ -90,15 +90,14 @@ const MyTabs = () => {
         name="Profile"
         component={MainProfile}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="user-circle-o" size={25} color={color} />;
           },
         }}
       />
     </Tab.Navigator>
   );
-}
-
+};
 
 const ShopPage = () => {
   return (

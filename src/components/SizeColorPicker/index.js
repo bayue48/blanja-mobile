@@ -14,9 +14,9 @@ import {ColorItem} from './../ColorItem';
 import {SizeItem} from './../SizeItem';
 import {IconLove} from '../../assets';
 // import {COLOR_DISABLE, COLOR_MAIN} from '../../utils/constans';
-import {REACT_APP_BASE_URL} from "@env"
+import {REACT_APP_BASE_URL} from '@env';
 
-const url = REACT_APP_BASE_URL
+const url = REACT_APP_BASE_URL;
 
 const SelectColorPicker = ({
   id,
