@@ -6,7 +6,8 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Picker,
+  Picker, 
+  ToastAndroid
 } from 'react-native';
 import {
   Container,
@@ -136,7 +137,7 @@ class AddProduct extends React.Component {
       )
       .then((data) => {
         console.log(data.data);
-        alert('produk berhasil di edit');
+        ToastAndroid.show("Sukses Edit", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         this.props.navigation.navigate('ListProduct');
       })
       .catch((err) => {
@@ -265,9 +266,9 @@ class AddProduct extends React.Component {
                     }}
                   />
                 </Item>
-                <Textarea
-                  rowSpan={5}
-                  bordered
+                <Item floatingLabel>
+                <Label>Description</Label>
+                  <Input
                   placeholder="Description"
                   name="description"
                   value={product_desc}
@@ -275,6 +276,7 @@ class AddProduct extends React.Component {
                     this.setState({product_desc: text});
                   }}
                 />
+                </Item>
 
                 <View style={{flexDirection: 'row'}}>
                   {product_img &&
@@ -316,18 +318,16 @@ class AddProduct extends React.Component {
                   <Text style={styles.btnText}>Take Picture</Text>
                 </TouchableOpacity>
               </Form>
-
-              <Button
-                danger
-                full
-                rounded
-                style={{marginTop: 15}}
-                onPress={this.postProduct}>
-                <Text style={{color: '#fff'}}> SUBMIT </Text>
-              </Button>
             </View>
           </ScrollView>
         </Content>
+        <Button
+                danger
+                full
+                rounded
+                onPress={this.postProduct}>
+                <Text style={{color: '#fff'}}> SUBMIT </Text>
+              </Button>
       </Container>
     );
   }
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   btnSection: {
-    width: 225,
+    marginTop: 20,
     height: 50,
     backgroundColor: '#DCDCDC',
     alignItems: 'center',

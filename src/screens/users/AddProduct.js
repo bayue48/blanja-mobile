@@ -6,7 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Picker,
+  Picker, ToastAndroid
 } from 'react-native';
 import {
   Container,
@@ -95,7 +95,7 @@ class AddProduct extends React.Component {
   postProduct = () => {
     const config = {
       headers: {
-        // 'x-access-token': 'Bearer ' + this.props.auth.token,
+        'x-access-token': 'Bearer ' + this.props.auth.token,
         'Content-type': 'multipart/form-data',
       },
     };
@@ -136,7 +136,7 @@ class AddProduct extends React.Component {
       .post(API_URL + `products/`, data, config)
       .then((data) => {
         console.log(data.data);
-        alert('produk berhasil ditambahkan');
+        ToastAndroid.show("Add Product Success", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         showNotification('Notification', 'Sukses Tambah Produk', channel);
         this.props.navigation.navigate('ListProduct');
       })
@@ -296,9 +296,9 @@ class AddProduct extends React.Component {
                     }}
                   />
                 </Item>
-                <Textarea
-                  rowSpan={5}
-                  bordered
+                <Item floatingLabel>
+                <Label>Description</Label>
+                  <Input
                   placeholder="Description"
                   name="description"
                   value={product_desc}
@@ -306,8 +306,9 @@ class AddProduct extends React.Component {
                     this.setState({product_desc: text});
                   }}
                 />
+                 </Item>
 
-                <View style={{flexDirection: 'row'}}>
+                <View>
                   {product_img &&
                     product_img.map((item) => {
                       return (
@@ -348,17 +349,17 @@ class AddProduct extends React.Component {
                 </TouchableOpacity>
               </Form>
 
-              <Button
-                danger
-                full
-                rounded
-                style={{marginTop: 15}}
-                onPress={this.postProduct}>
-                <Text style={{color: '#fff'}}> SUBMIT </Text>
-              </Button>
+              
             </View>
           </ScrollView>
         </Content>
+        <Button
+                danger
+                full
+                rounded
+                onPress={this.postProduct}>
+                <Text style={{color: '#fff'}}> SUBMIT </Text>
+              </Button>
       </Container>
     );
   }
@@ -374,7 +375,7 @@ export default connect(mapStateToProps)(AddProduct);
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 15,
+    padding: 15,
   },
   rowTitle: {
     marginTop: 14,
@@ -385,19 +386,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   btnSection: {
-    width: 225,
+    marginTop: 20,
+    flexDirection: 'row',
     height: 50,
     backgroundColor: '#DCDCDC',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 3,
     marginBottom: 10,
+    flex: 1,
   },
   btnText: {
     textAlign: 'center',
     color: 'gray',
     fontSize: 14,
     fontWeight: 'bold',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   size: {
     width: '100%',

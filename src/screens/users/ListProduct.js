@@ -41,7 +41,7 @@ class ListProduct extends React.Component {
     const {products} = this.state;
     return (
       <>
-        <Container>
+        <Container style={{padding: 20}}>
           <Header transparent>
             <Left>
               <Button

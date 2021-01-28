@@ -104,7 +104,7 @@ class Home extends React.Component {
             </ImageBackground>
           </View>
 
-          <Grid>
+          <Grid style={{padding: 10}}>
             <SafeAreaView>
               <View>
                 <Text style={styles.title}>New</Text>
@@ -201,6 +201,9 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: windowWidth * 0.04,
+      flex: 1,
+      justifyContent: 'flex-start',
+      paddingHorizontal: 10,
   },
   title: {
     fontSize: 34,

@@ -74,16 +74,11 @@ class Checkout extends React.Component {
       };
       if (this.props.dispatch(orderItems(Order))) {
         const newTrx = {
-          user_id: 1,
-          TrxId: Order.trxId,
-          payment: payment,
-          address: this.props.address.selectedAddress,
-          qty: this.props.cart.mybag.length,
-          total: this.props.cart.totalAmount + shippingPrice,
-          trackingNumber: `XXXXXXXXXXXXXXX-0${this.props.cart.trxId}`,
+          user_id: 2,
+          
         };
         axios
-          .post(API_URL + 'transactions', newTrx)
+          .post(API_URL + 'history', newTrx)
           .then((result) => {
             axios
               .post(API_URL + 'transactions/itemOrder', this.props.cart.mybag)
@@ -105,7 +100,7 @@ class Checkout extends React.Component {
   componentDidMount = () => {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       axios
-        .get(API_URL + `/address/get/${this.props.address.selectedAddress}`)
+        .get(API_URL + `address/get/${this.props.address.selectedAddress}`)
         .then(({data}) => {
           this.setState({
             address: data.data,

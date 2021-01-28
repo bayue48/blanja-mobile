@@ -13,7 +13,7 @@ import {
   Label,
   Input,
 } from 'native-base';
-import {Image, StyleSheet} from 'react-native';
+import {Image, StyleSheet, ToastAndroid} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
 import axios from 'axios';
@@ -50,7 +50,7 @@ class AddAddress extends Component {
       axios
         .post(API_URL + `address/`, addressData)
         .then(({data}) => {
-          alert(data.message);
+          ToastAndroid.show("Add Address Sukses", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
           this.props.navigation.navigate('Shipping');
         })
         .catch(({response}) => {

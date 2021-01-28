@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SplashScreen from 'react-native-splash-screen';
@@ -33,6 +33,8 @@ import AddProduct from './screens/users/AddProduct';
 import EditProduct from './screens/users/EditProduct';
 import Search from './screens/Search';
 import Review from './screens/users/ProductReview';
+import Chat from './screens/users/Chat';
+import OrderedItem from './screens/users/OrderedItem';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -55,7 +57,7 @@ const MyTabs = () => {
         component={Home}
         options={{
           tabBarIcon: ({color}) => {
-            return <Icon name="home" size={25} color={color} />;
+            return <Image source={require('./assets/icons/home.png')} />;
           },
         }}
       />
@@ -64,7 +66,7 @@ const MyTabs = () => {
         component={ShopPage}
         options={{
           tabBarIcon: ({color}) => {
-            return <Icon name="shopping-cart" size={25} color={color} />;
+            return <Image source={require('./assets/icons/shop.png')} />;
           },
         }}
       />
@@ -73,16 +75,7 @@ const MyTabs = () => {
         component={MyBag}
         options={{
           tabBarIcon: ({color}) => {
-            return <Icon name="shopping-bag" size={25} color={color} />;
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Favorite"
-        component={Login}
-        options={{
-          tabBarIcon: ({color}) => {
-            return <Icon name="heart" size={25} color={color} />;
+            return <Image source={require('./assets/icons/bag.png')} />;
           },
         }}
       />
@@ -91,7 +84,7 @@ const MyTabs = () => {
         component={MainProfile}
         options={{
           tabBarIcon: ({color}) => {
-            return <Icon name="user-circle-o" size={25} color={color} />;
+            return <Image source={require('./assets/icons/account.png')} />;
           },
         }}
       />
@@ -125,6 +118,7 @@ const MainProfile = () => {
     <Stack.Navigator initialRouteName="MainProfile" headerMode="none">
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Orders" component={Order} />
+      <Stack.Screen name="OrderedItem" component={OrderedItem} />
       <Stack.Screen name="Store" component={UserStore} />
       <Stack.Screen name="ListProduct" component={ListProduct} />
       <Stack.Screen name="AddProduct" component={AddProduct} />
@@ -148,18 +142,17 @@ const appRouter = () => {
 
   return (
     <>
-      {/* <NavigationContainer> */}
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Tab" component={MyTabs} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Signup" component={Signup} />
-        <Stack.Screen name="Forgot" component={Forgot} />
-        <Stack.Screen name="ResetPassword" component={ResetPassword} />
-        <Stack.Screen name="Otp" component={Otp} />
-        <Stack.Screen name="Notification" component={Notification} />
-        <Stack.Screen name="DetailPage" component={DetailPage} />
-      </Stack.Navigator>
-      {/* </NavigationContainer> */}
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name="Tab" component={MyTabs} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen name="Forgot" component={Forgot} />
+          <Stack.Screen name="ResetPassword" component={ResetPassword} />
+          <Stack.Screen name="Otp" component={Otp} />
+          <Stack.Screen name="Notification" component={Notification} />
+          <Stack.Screen name="DetailPage" component={DetailPage} />
+          <Stack.Screen name="Chat" component={Chat} />
+        </Stack.Navigator>
     </>
   );
 };

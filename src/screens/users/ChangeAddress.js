@@ -12,7 +12,7 @@ import {
   Input,
   Label,
 } from 'native-base';
-import {Image, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Image, View, TouchableOpacity, StyleSheet, ToastAndroid} from 'react-native';
 import axios from 'axios';
 import {API_URL} from '@env';
 
@@ -45,7 +45,7 @@ export default class ChangeAddress extends React.Component {
           addressData,
         )
         .then(({data}) => {
-          alert(data.message);
+          ToastAndroid.show("Change Sukses", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
           this.props.navigation.navigate('Shipping');
         })
         .catch(({response}) => {

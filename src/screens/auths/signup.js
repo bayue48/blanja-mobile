@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, ToastAndroid} from 'react-native';
 import {
   Container,
   Header,
@@ -29,6 +29,8 @@ class Signup extends React.Component {
   };
 
   signup = () => {
+    const mail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-]/;
+    const pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
     if (
       this.state.name === '' ||
       this.state.email === '' ||
@@ -37,24 +39,17 @@ class Signup extends React.Component {
       this.setState({
         errorForm: 'Semua kolom harus diisi',
       });
+    } else if (!this.state.email.match(mail)) {
+      this.setState({errorForm: "Invalid email format, ex: user@domain.com"});
+    } else if (!this.state.password.match(pass)) {
+      this.setState({errorForm: "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"});
     } else {
-      let datas = {
+      let data = {
         email: this.state.email,
         name: this.state.name,
         password: this.state.password,
-      };
-      if (this.state.btnState) {
-        data = {
-          ...datas,
-          level_id: 1,
-          store: this.state.store,
-        };
-      } else {
-        data = {
-          ...datas,
-          level_id: 2,
-          store: '',
-        };
+        level_id: 2,
+        store: '',
       }
       console.log(data);
       axios
@@ -64,12 +59,12 @@ class Signup extends React.Component {
             errorForm: '',
           });
           console.log(data);
-          alert('Register Berhasil');
+          ToastAndroid.show("Register Berhasil", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
           this.props.navigation.navigate('Home');
         })
         .catch((error) => {
           console.log(error.response.data.msg);
-          alert(error.response.data.msg);
+          ToastAndroid.show("Email Sudah Terdaftar/Register Gagal", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         });
     }
   };
@@ -77,93 +72,91 @@ class Signup extends React.Component {
   render() {
     let {email, name, password, btnState, store} = this.state;
     console.log(this.state);
-    let btnText;
-    let formState;
-    if (!btnState) {
-      btnText = <Text style={{color: '#d9534f'}}> Customer </Text>;
-      formState = (
-        <>
-          <Item floatingLabel>
-            <Label>Name</Label>
-            <Input
-              name="name"
-              value={name}
-              onChangeText={(text) => {
-                this.setState({name: text});
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Email</Label>
-            <Input
-              name="email"
-              value={email}
-              onChangeText={(text) => {
-                this.setState({email: text});
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Password</Label>
-            <Input
-              name="password"
-              value={password}
-              onChangeText={(text) => {
-                this.setState({password: text});
-              }}
-              secureTextEntry={true}
-            />
-          </Item>
-        </>
-      );
-    } else {
-      btnText = <Text style={{color: '#d9534f'}}> Seller </Text>;
-      formState = (
-        <>
-          <Item floatingLabel>
-            <Label>Name</Label>
-            <Input
-              name="fullname"
-              value={name}
-              onChangeText={(text) => {
-                this.setState({name: text});
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Email</Label>
-            <Input
-              name="email"
-              value={email}
-              onChangeText={(text) => {
-                this.setState({email: text});
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Store Name</Label>
-            <Input
-              name="store"
-              value={store}
-              onChangeText={(text) => {
-                this.setState({store: text});
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Password</Label>
-            <Input
-              name="password"
-              value={password}
-              onChangeText={(text) => {
-                this.setState({password: text});
-              }}
-              secureTextEntry={true}
-            />
-          </Item>
-        </>
-      );
-    }
+    // let formState;
+    // if (!btnState) {
+    //   btnText = <Text style={{color: '#d9534f'}}> Customer </Text>;
+    //   formState = (
+    //     <>
+    //       <Item floatingLabel>
+    //         <Label>Name</Label>
+    //         <Input
+    //           name="name"
+    //           value={name}
+    //           onChangeText={(text) => {
+    //             this.setState({name: text});
+    //           }}
+    //         />
+    //       </Item>
+    //       <Item floatingLabel>
+    //         <Label>Email</Label>
+    //         <Input
+    //           name="email"
+    //           value={email}
+    //           onChangeText={(text) => {
+    //             this.setState({email: text});
+    //           }}
+    //         />
+    //       </Item>
+    //       <Item floatingLabel>
+    //         <Label>Password</Label>
+    //         <Input
+    //           name="password"
+    //           value={password}
+    //           onChangeText={(text) => {
+    //             this.setState({password: text});
+    //           }}
+    //           secureTextEntry={true}
+    //         />
+    //       </Item>
+    //     </>
+    //   );
+    // } else {
+    //   btnText = <Text style={{color: '#d9534f'}}> Seller </Text>;
+      // formState = (
+      //   <>
+      //     <Item floatingLabel>
+      //       <Label>Name</Label>
+      //       <Input
+      //         name="fullname"
+      //         value={name}
+      //         onChangeText={(text) => {
+      //           this.setState({name: text});
+      //         }}
+      //       />
+      //     </Item>
+      //     <Item floatingLabel>
+      //       <Label>Email</Label>
+      //       <Input
+      //         name="email"
+      //         value={email}
+      //         onChangeText={(text) => {
+      //           this.setState({email: text});
+      //         }}
+      //       />
+      //     </Item>
+      //     <Item floatingLabel>
+      //       <Label>Store Name</Label>
+      //       <Input
+      //         name="store"
+      //         value={store}
+      //         onChangeText={(text) => {
+      //           this.setState({store: text});
+      //         }}
+      //       />
+      //     </Item>
+      //     <Item floatingLabel>
+      //       <Label>Password</Label>
+      //       <Input
+      //         name="password"
+      //         value={password}
+      //         onChangeText={(text) => {
+      //           this.setState({password: text});
+      //         }}
+      //         secureTextEntry={true}
+      //       />
+      //     </Item>
+      //   </>
+      // );
     return (
       <Container style={styles.container}>
         <Header transparent>
@@ -197,7 +190,37 @@ class Signup extends React.Component {
             </Button>
           </View>
           <View style={{marginTop: 15}}>
-            {formState}
+          <Item floatingLabel>
+            <Label>Name</Label>
+            <Input
+              name="name"
+              value={name}
+              onChangeText={(text) => {
+                this.setState({name: text});
+              }}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Email</Label>
+            <Input
+              name="email"
+              value={email}
+              onChangeText={(text) => {
+                this.setState({email: text});
+              }}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Password</Label>
+            <Input
+              name="password"
+              value={password}
+              onChangeText={(text) => {
+                this.setState({password: text});
+              }}
+              secureTextEntry={true}
+            />
+          </Item>
 
             <TouchableOpacity
               style={{flexDirection: 'row-reverse'}}

@@ -40,7 +40,7 @@ class ResetPassword extends React.Component {
           newPassword: this.state.newPassword,
         };
         axios
-          .patch(API_URL + '/auth/reset', resetData)
+          .patch(API_URL + 'auth/reset', resetData)
           .then(({data}) => {
             console.log(data);
             alert(data.message);

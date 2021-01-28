@@ -128,19 +128,6 @@ export default class navBottom extends React.Component {
           <TouchableOpacity
             style={{flex: 1}}
             onPress={() => {
-              this.props.navigation.navigate('Signup');
-            }}>
-            <View style={{marginLeft: 20}}>
-              <Image
-                source={require('../assets/icons/fav.png')}
-                style={{width: 24, height: 24}}
-              />
-              <Text style={{color: 'gray', marginLeft: -13}}>Favourite</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{flex: 1}}
-            onPress={() => {
               this.props.navigation.navigate('Profile');
             }}>
             <View style={{marginLeft: 20}}>{profileBtn}</View>

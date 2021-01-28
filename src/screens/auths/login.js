@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, ToastAndroid} from 'react-native';
 import {
   Container,
   Header,
@@ -36,10 +36,13 @@ class Login extends React.Component {
   };
 
   Login = () => {
+    const mail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-]/;
     if (this.state.email === '' || this.state.password === '') {
       this.setState({
         errorForm: 'Semua kolom harus diisi!',
       });
+    } else if (!this.state.email.match(mail)) {
+        this.setState({errorForm: "Invalid email format, ex: user@domain.com"});
     } else {
       const data = {
         email: this.state.email,
@@ -61,10 +64,11 @@ class Login extends React.Component {
           this.props.dispatch(setToken(data.tokenId));
           this.props.dispatch(setLevelUser(data.level_id));
           this.props.navigation.navigate('Home');
+          ToastAndroid.show("Login Berhasil", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         })
         .catch(({response}) => {
           console.log(response.data);
-          alert(response.data.msg);
+          ToastAndroid.show("Login Gagal", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         });
     }
   };

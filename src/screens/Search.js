@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  ToastAndroid
 } from 'react-native';
 import {
   Container,
@@ -65,7 +66,7 @@ class Search extends Component {
         })
         .catch((err) => {
           console.log(err);
-          alert('barang tidak ditemukan');
+          ToastAndroid.show("Product Tidak Ditemukan", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         });
     }
   };
@@ -215,7 +216,9 @@ const styles = StyleSheet.create({
     maxHeight: 120,
   },
   grid: {
+    padding: 20,
     flexDirection: 'row',
+    marginLeft: 25,
     flexWrap: 'wrap',
     flex: 1,
     marginLeft: 10,

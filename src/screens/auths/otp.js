@@ -25,7 +25,7 @@ class Otp extends React.Component {
   checkOTP = () => {
     if (this.state.otp !== '') {
       axios
-        .get(API_URL + '/auth/otp/')
+        .get(API_URL + 'auth/otp/')
         .then(({data}) => {
           alert(data.message);
           this.props.navigation.navigate('ResetPassword');
@@ -36,7 +36,7 @@ class Otp extends React.Component {
         });
     } else {
       this.setState({
-        errorForm: 'Kolom OTP harus diisi!',
+        errorForm: 'OTP harus diisi!',
       });
     }
   };

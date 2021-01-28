@@ -169,19 +169,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    paddingHorizontal: 10,
+    marginLeft: 20, 
   },
   grid: {
+    padding: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     flex: 1,
-    marginLeft: 10,
+    marginLeft: 25,
   },
   filter: {
     marginLeft: 10,
     marginBottom: 10,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   txtFilter: {
     fontSize: 20,

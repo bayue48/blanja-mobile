@@ -1,12 +1,39 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ToastAndroid,
+} from 'react-native';
 import {Button} from 'native-base';
 import {API_URL} from '@env';
+import axios from 'axios';
 
 class CardListPrd extends Component {
   constructor(props) {
     super(props);
   }
+  deleteProduct = () => {
+    // const config = {
+    //   headers: {
+    //     'x-access-token': 'Bearer ' + this.props.auth.token,
+    //   },
+    // };
+    axios
+      .delete(API_URL + 'products/' + this.props.id)
+      .then(({result}) => {
+        this.props.navigation.navigate('Profile');
+        ToastAndroid.show(
+          'Delete Success',
+          ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM,
+        );
+      })
+      .catch((err) => console.error(err));
+  };
+
   render() {
     const {id, name, price, category, image} = this.props;
     return (
@@ -46,6 +73,24 @@ class CardListPrd extends Component {
                 }}>
                 <Text style={{fontWeight: '700', fontSize: 12, color: '#FFF'}}>
                   Edit
+                </Text>
+              </Button>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}>
+              <Text style={{color: 'gray', marginBottom: 10}}>{category}</Text>
+              <Button
+                full
+                rounded
+                danger
+                style={{width: 50, height: 20, marginTop: 5}}
+                onPress={this.deleteProduct}>
+                <Text style={{fontWeight: '700', fontSize: 12, color: '#FFF'}}>
+                  Delete
                 </Text>
               </Button>
             </View>

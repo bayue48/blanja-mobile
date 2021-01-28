@@ -136,7 +136,7 @@ export default class Filters extends React.Component {
     this.setState({
       axiosData: axiosData,
     });
-    this.props.navigation.navigate('Categories', {
+    this.props.navigation.navigate('Category', {
       url: axiosData,
     });
   };
@@ -375,7 +375,7 @@ export default class Filters extends React.Component {
                   marginTop: 15,
                   marginRight: 15,
                   flexDirection: 'row',
-                  justifyContent: 'space-around',
+                  // justifyContent: 'space-around',
                 }}>
                 <CheckBox
                   color="red"

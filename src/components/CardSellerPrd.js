@@ -17,7 +17,7 @@ class CardBag extends Component {
       },
     };
     axios
-      .delete(API_URL + '/product/delete/' + this.props.id, config)
+      .delete(API_URL + 'products/' + this.props.id, config)
       .then(({result}) => {
         alert('Successfully deleted!');
       })

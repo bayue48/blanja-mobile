@@ -8,7 +8,8 @@ import {
   ScrollView,
   TouchableOpacity,
   SafeAreaView,
-  Picker,
+  Picker, 
+  ToastAndroid
 } from 'react-native';
 import CardProduct from '../components/CardProduct';
 import Review from '../components/Review';
@@ -28,6 +29,7 @@ class DetailPage extends Component {
     selectedSize: 0,
     selectedColor: 0,
     product: [],
+    productNew: [],
   };
 
   setSize = (e) => {
@@ -56,16 +58,31 @@ class DetailPage extends Component {
       });
   };
 
+  getNewProducts = () => {
+    axios
+      .get(API_URL + 'products/sort?sortBy=updated_at&orderBy=desc')
+      .then(({data}) => {
+        // console.log(data.data.products)
+        this.setState({
+          productNew: data.data.products,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   componentDidMount = () => {
+    this.getNewProducts();
     this.getSingleProduct();
   };
 
   addToCart = () => {
     if (!this.props.auth.isLogin) {
-      alert('Anda harus login terlebih dahulu');
+      ToastAndroid.show("Harus Login Terlebih Dahulu", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
     } else {
       if (this.state.selectedColor == 0 || this.state.selectedSize == 0) {
-        alert('Harap pilih warna dan ukuran');
+        ToastAndroid.show("Pilih warna dan ukuran", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       } else {
         const Items = {
           user_id: this.props.auth.id,
@@ -79,14 +96,14 @@ class DetailPage extends Component {
         };
         console.log(Items);
         this.props.dispatch(addItems(Items));
-        alert('Berhasil menambahkan ke keranjang');
+        ToastAndroid.show("berhasil masukan keranjang", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         this.props.navigation.navigate('MyBag');
       }
     }
   };
 
   render() {
-    const {product} = this.state;
+    const {product, productNew} = this.state;
     const id_productDetails = this.props.route.params.itemId;
     return (
       <>
@@ -201,11 +218,23 @@ class DetailPage extends Component {
                                 </View>
                               </TouchableOpacity>
                               <TouchableOpacity>
-                                <View style={styles.love}>
-                                  <Image
-                                    source={require('./../assets/icons/fav.png')}
-                                  />
-                                </View>
+                                <Button
+                                  full
+                                  rounded
+                                  danger
+                                  style={{width: 50, height: 40, padding: 5}}
+                                  onPress={() => {
+                                    this.props.navigation.navigate('Chat');
+                                  }}>
+                                  <Text
+                                    style={{
+                                      fontWeight: '700',
+                                      fontSize: 12,
+                                      color: '#FFF',
+                                    }}>
+                                    Chat
+                                  </Text>
+                                </Button>
                               </TouchableOpacity>
                             </View>
                             <View style={styles.wraptitle}>
@@ -248,6 +277,34 @@ class DetailPage extends Component {
                                                             </View>
                                                         </ScrollView>
                                                     </SafeAreaView> */}
+                            <SafeAreaView>
+                              <ScrollView horizontal={true}>
+                                {productNew &&
+                                  productNew.map(
+                                    ({
+                                      id,
+                                      product_name,
+                                      product_price,
+                                      product_category,
+                                      product_img,
+                                    }) => {
+                                      let img = product_img.split(',')[0];
+                                      // console.log(img);
+                                      return (
+                                        <CardProduct
+                                          id={id}
+                                          name={product_name}
+                                          price={product_price}
+                                          category={product_category}
+                                          image={img}
+                                          navigation={this.props.navigation}
+                                        />
+                                      );
+                                    },
+                                  )}
+                                {/* <CardProduct navigation={this.props.navigation} /> */}
+                              </ScrollView>
+                            </SafeAreaView>
                             <Review idProduct={id_productDetails} />
                           </View>
                         </Row>
