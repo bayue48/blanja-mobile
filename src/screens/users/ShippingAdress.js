@@ -12,7 +12,7 @@ import {
   Input,
   Right,
 } from 'native-base';
-import {Image, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Image, View, TouchableOpacity, StyleSheet, ToastAndroid} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
@@ -57,7 +57,8 @@ class Shipping extends React.Component {
     });
   };
   setActiveAddress = () => {
-    alert('Adress ' + this.state.selectedAddress + ' terpilih');
+    ToastAndroid.show("Adrress Terpilih", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+    
     this.props.dispatch(setAddress(this.state.selectedAddress));
   };
 
