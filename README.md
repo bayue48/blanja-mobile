@@ -65,10 +65,7 @@ API_URL = "http://localhost:4000"
 
 `npx react-native run-android`.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000/](http://localhost:3000/) to view it in the browser.
-
-If you want to build, type `npm run build`.
+Runs the app in the development mode.
 
 ## Screenshoots
 
