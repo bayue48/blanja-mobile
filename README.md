@@ -80,7 +80,7 @@ Runs the app in the development mode.
 
 This is Blanja Web build version, let's try it.
 
-[http://](http://)
+[Download](http://)
 
 ## Related Project
 
