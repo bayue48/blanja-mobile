@@ -1,6 +1,6 @@
 {
-  "name": "blanjain",
-  "version": "0.0.1",
+  "name": "blanja-mobile",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -50,5 +50,17 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "<div align=\"center\">\r </div>",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bayue48/blanja-mobile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bayue48/blanja-mobile/issues"
+  },
+  "homepage": "https://github.com/bayue48/blanja-mobile#readme"
 }
