@@ -1,87 +1,93 @@
-# BlanjaIn React-Native
+# blanjaMobile
+
+<div align="center">
+</div>
 
 ## Contents
 
 - [Description](#description)
 - [Features](#features)
-- [Requirements](#requirements-for-development)
-- [Installation](#installation-for-development)
-- [Screenshot](#screenshot)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [ENV](#ENV)
+- [Usage](#Usage)
+- [Screenshoots](#screenshoots)
+- [Demo](#demo)
 - [Related Project](#related-project)
+- [License](#license)
 
 ## Description
 
-**BlanjaIn** is a app-based e-commerce application that allows buyers to order
-products of their choice. Consists of 2 types of users, namely buyers and
-sellers.
+An E-commerce website thar we can buy and sell new or used goods called Blanja Mobile version which is created using React Native.
 
 ## Features
 
-- Browsing items
-- Order product
-- History transaction
-- Add or edit product (sellers only)
-- Chat with seller
-- Edit profile
-- Reset Password
+- Search Product
+- Add Product
+- Edit Product
+- Edit Profile
 - etc
 
-## Requirements for Development
+### Requirements
 
 - [`Node Js`](https://nodejs.org/en/)
 - [`npm`](https://www.npmjs.com/get-npm)
-- [`ReactNative`](https://reactnative.dev/)
-- [`BlanjaIn Backend`](https://github.com/ariefw96/blanja-restAPI)
+- [`ReactJs`](https://reactjs.org/)
+- [`Blanja API`](https://github.com/bayue48/blanja-api.git)
 
-## Installation for Development
+### Installation
 
-1. Open your terminal or command prompt
-2. Type `git clone https://github.com/ariefw96/blanjaIn-React-Native.git`
-3. Open the folder and type `npm install` or `yarn install` for install dependencies from package.json
-4. Create file **_.env_** in root directory with the following contents :
+1. Clone the repo
+   ```sh
+   git clone https://github.com/bayue48/blanja-mobile.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+   This will install the dependencies inside `node_modules`
+   
+### ENV
+
+Please create and make the changes in the .env file.
 
 ```bash
-BASE_URL = "your_backend_API_URL"
+API_URL = "http://host_backend:port_backend"
 ```
 
 Example :
 
-- http://host_backend:port_backend is http://localhost:8000
-
-so, you can write in .env file like this :
-
 ```bash
-BASE_URL = "http://localhost:8000"
+API_URL = "http://localhost:4000"
 ```
 
-5. Before run this project, you must configure and run backend. You can find backend for this project [here](https://github.com/ariefw96/blanja-restAPI)
-6. Type `npm run server` in terminal for running backend.
-7. If you want to build this project, type `react-native start --reset-cache` then `react-native run-android`.
+### Usage
 
-## Screenshot
+`npx react-native run-android`.
 
-# Here some display about the app
+Runs the app in the development mode.
 
-|  Home                |  Product Details                        |
-|----------------------|-----------------------------------------|
-| <img src="https://user-images.githubusercontent.com/70320451/107331704-ce87e680-6ae5-11eb-9d64-c3edf9b9c8b4.jpg" width="450" />  | <img src="https://user-images.githubusercontent.com/70320451/107331694-ccbe2300-6ae5-11eb-9645-8bb0bbf51789.jpg" width="450" />             |
+## Screenshoots
 
-|  Cart                |  Shipping Address                       |
-|----------------------|-----------------------------------------|
-| <img src="https://user-images.githubusercontent.com/70320451/107331707-cf207d00-6ae5-11eb-8e50-c855e9c2c17a.jpg" width="450" />  | <img src="https://user-images.githubusercontent.com/70320451/107331698-cd56b980-6ae5-11eb-887b-5f2094c8517d.jpg" width="450" />             |
+<div align="center">
+   <img width="25%" src="./Image%202021-02-09%20at%2010.14.18%20AM.jpeg">
+   <img width="25%" src="./com.blanjamobile_Screenshot_2021.02.09_13.48.26.png">
+   <img width="25%" src="./Image%202021-02-09%20at%2010.14.19%20AM.jpeg">
+   <img width="25%" src="./Image%202021-02-09%20at%2010.14.19%20AM%20(1).jpeg">
+</div>
 
-|  My Order            |  Order Details                          |
-|----------------------|-----------------------------------------|
-| <img src="https://user-images.githubusercontent.com/70320451/107331686-caf45f80-6ae5-11eb-9341-1fd88eab0e6a.jpg" width="450" />  |<img src="https://user-images.githubusercontent.com/70320451/107331700-cdef5000-6ae5-11eb-97fa-f983107dcf12.jpg" width="450" />|
+## Demo
+
+This is Blanja Web build version, let's try it.
+
+[Download](http://)
 
 ## Related Project
 
-**restful-API**
+RESTful API for this web application, clone this for development.
 
+<a href="https://github.com/bayue48/blanja-api.git">REST API</a>
 
-[`BlanjaIn-restAPI`](https://github.com/ariefw96/BlanjaIn-restAPI)
+## License
 
-Other project
-
-[`BlanjaIn (ReactJs)`](https://github.com/ariefw96/BlanjaIn-React)
-
+Distributed under the [MIT](https://github.com/bayue48/blanja-mobile/blob/master/LICENSE) License.
