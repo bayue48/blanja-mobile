@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface blanjainTests : XCTestCase
+@interface BlanjaTests : XCTestCase
 
 @end
 
-@implementation blanjainTests
+@implementation BlanjaTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

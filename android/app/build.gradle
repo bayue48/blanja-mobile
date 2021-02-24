@@ -132,7 +132,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.blanjain"
+        applicationId "com.bayuapp.blanja"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
