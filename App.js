@@ -1,15 +1,15 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import { NavigationContainer, StackRouter } from '@react-navigation/native';
-import { Provider } from 'react-redux'
+import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
 
 //persist
-import { PersistGate } from 'redux-persist/es/integration/react'
-import { persistStore } from 'redux-persist'
-import store from './src/utils/redux/store'
-import Router from './src/route'
+import {PersistGate} from 'redux-persist/es/integration/react';
+import {persistStore} from 'redux-persist';
+import store from './src/utils/redux/store';
+import Router from './src/router';
 
-const persistedStore = persistStore(store)
+const persistedStore = persistStore(store);
 
 const appRouter = () => {
   return (
@@ -20,7 +20,7 @@ const appRouter = () => {
         </NavigationContainer>
       </PersistGate>
     </Provider>
-  )
-}
+  );
+};
 
 export default appRouter;

@@ -1,8 +1,7 @@
 import 'react-native-gesture-handler';
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 // import Splash from './screens/splash/index'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -10,69 +9,69 @@ import Home from './screens/home/index';
 
 import Profile from './screens/profile/index';
 
-import { SocketProvider } from './utils/context/SocketProvider';
+import {SocketProvider} from './utils/context/SocketProvider';
 
 import Login from './screens/auth/login';
 import Signup from './screens/auth/register';
 import Activate from './screens/auth/activate';
 import Forgot from './screens/auth/forgotPassword';
 import Otp from './screens/auth/otp';
-import Reset from './screens/auth/resetPassword'
+import Reset from './screens/auth/resetPassword';
 
 import Shop from './screens/shop/index';
-import Search from './screens/shop/search'
-import Categories from './screens/shop/categories'
-import DetailPage from './screens/shop/detailProduct'
-import Review from './screens/shop/productReview'
+import Search from './screens/shop/search';
+import Categories from './screens/shop/categories';
+import DetailPage from './screens/shop/detailProduct';
+import Review from './screens/shop/productReview';
 
 import Bag from './screens/myBag/index';
-import Checkout from './screens/myBag/checkoutPayment'
-import Success from './screens/myBag/success'
+import Checkout from './screens/myBag/checkoutPayment';
+import Success from './screens/myBag/success';
 
-import Order from './screens/profile/myOrder'
-import DetailOrders from './screens/profile/orderDetails'
-import Shipping from './screens/profile/shippingAddress'
-import AddAddress from './screens/profile/addShipingAddress'
-import ChangeAddress from './screens/profile/changeAddress'
-import DetailsAddress from './screens/profile/detailAddress'
-import Setting from './screens/profile/setting'
+import Order from './screens/profile/myOrder';
+import DetailOrders from './screens/profile/orderDetails';
+import Shipping from './screens/profile/shippingAddress';
+import AddAddress from './screens/profile/addShipingAddress';
+import ChangeAddress from './screens/profile/changeAddress';
+import DetailsAddress from './screens/profile/detailAddress';
+import Setting from './screens/profile/setting';
 
-import Notification from './screens/home/notifications'
+import Notification from './screens/home/notifications';
 
-import UserStore from './screens/profile/seller'
-import ListProduct from './screens/profile/seller/ListProduct'
-import AddProduct from './screens/profile/seller/addProduct'
-import EditProduct from './screens/profile/seller/editProduct'
-import OrderedItem from './screens/profile/seller/ordererItem'
+import UserStore from './screens/profile/seller';
+import ListProduct from './screens/profile/seller/ListProduct';
+import AddProduct from './screens/profile/seller/addProduct';
+import EditProduct from './screens/profile/seller/editProduct';
+import OrderedItem from './screens/profile/seller/ordererItem';
 
-import ListChat from './screens/profile/ListChat'
-import ChatRoom from './screens/profile/chatRoom'
+import ListChat from './screens/profile/ListChat';
+import ChatRoom from './screens/profile/chatRoom';
 
-import NewProducts from './screens/home/new'
-import PopularProducts from './screens/home/popular'
+import NewProducts from './screens/home/new';
+import PopularProducts from './screens/home/popular';
 
-import Splash from './screens/splash'
+import Splash from './screens/splash';
 
-import { useSocket } from './utils/context/SocketProvider'
-import { showNotification } from './notif'
+// import {useSocket} from './utils/context/SocketProvider';
+// import {showNotification} from './notif';
 
-import { useSelector } from 'react-redux'
+import {useSelector} from 'react-redux';
 
-import Chat from './screens/profile/chat'
+import Chat from './screens/profile/chat';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const channel = 'notif'
+const channel = 'notif';
 
-const MyTabs = ({ auth }) => {
-  const level = useSelector((state) => (state.auth.level))
+const MyTabs = ({auth}) => {
+  const level = useSelector((state) => state.auth.level);
 
   return (
     <Tab.Navigator
       headerMode="none"
-      sceneContainerStyle={{ borderWidth: 0 }}
-      barStyle={{ borderTopLeftRadius: 20 }}
+      sceneContainerStyle={{borderWidth: 0}}
+      barStyle={{borderTopLeftRadius: 20}}
       tabBarOptions={{
         activeTintColor: '#DB3022',
         style: {
@@ -84,7 +83,7 @@ const MyTabs = ({ auth }) => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="home" size={25} color={color} />;
           },
         }}
@@ -93,22 +92,22 @@ const MyTabs = ({ auth }) => {
         name="Shop"
         component={ShopPage}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="shopping-cart" size={25} color={color} />;
           },
         }}
       />
-      {level == 1 &&
+      {level === 2 && (
         <Tab.Screen
-          name="MyBag"
+          name="Bag"
           component={myBag}
           options={{
-            tabBarIcon: ({ color }) => {
+            tabBarIcon: ({color}) => {
               return <Icon name="shopping-bag" size={25} color={color} />;
             },
           }}
         />
-      }
+      )}
       {/* {level == 1 && <Tab.Screen
         name="Favorite"
         component={Login}
@@ -122,14 +121,14 @@ const MyTabs = ({ auth }) => {
         name="Profile"
         component={MainProfile}
         options={{
-          tabBarIcon: ({ color }) => {
+          tabBarIcon: ({color}) => {
             return <Icon name="user-circle-o" size={25} color={color} />;
           },
         }}
       />
     </Tab.Navigator>
   );
-}
+};
 
 const myBag = () => {
   return (
@@ -141,7 +140,7 @@ const myBag = () => {
       <Stack.Screen name="ChangeAddress" component={ChangeAddress} />
       <Stack.Screen name="AddAddress" component={AddAddress} />
     </Stack.Navigator>
-  )
+  );
 };
 
 const ShopPage = () => {
@@ -200,11 +199,11 @@ const appRouter = () => {
           <Stack.Screen name="New" component={NewProducts} />
           <Stack.Screen name="Popular" component={PopularProducts} />
           <Stack.Screen name="Success" component={Success} />
+          <Stack.Screen name="Cart" component={Bag} />
         </Stack.Navigator>
       </SocketProvider>
-
     </>
   );
 };
 
-export default appRouter
+export default appRouter;

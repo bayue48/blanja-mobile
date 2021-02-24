@@ -13,7 +13,7 @@ const handleScheduledNotification = (tittle, message, channelId) => {
     channelId,
     tittle,
     message,
-    date: new date(Date.now() + 5 * 1000),
+    date: new Date(Date.now() + 5 * 1000),
   });
 };
 
@@ -21,4 +21,4 @@ const handleCancel = () => {
   PushNotification.cancelAllLocalNotifications();
 };
 
-export {showNotification, handleCancel, handleScheduledNotification}; 
+export {showNotification, handleCancel, handleScheduledNotification};
