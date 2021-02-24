@@ -70,10 +70,10 @@ Runs the app in the development mode.
 ## Screenshoots
 
 <div align="center">
-   <img width="25%" src="./Image%202021-02-09%20at%2010.14.18%20AM.jpeg">
-   <img width="25%" src="./com.blanjamobile_Screenshot_2021.02.09_13.48.26.png">
-   <img width="25%" src="./Image%202021-02-09%20at%2010.14.19%20AM.jpeg">
-   <img width="25%" src="./Image%202021-02-09%20at%2010.14.19%20AM%20(1).jpeg">
+   <img width="20%" src="./Image%202021-02-09%20at%2010.14.18%20AM.jpeg">
+   <img width="20%" src="./com.blanjamobile_Screenshot_2021.02.09_13.48.26.png">
+   <img width="20%" src="./Image%202021-02-09%20at%2010.14.19%20AM.jpeg">
+   <img width="20%" src="./Image%202021-02-09%20at%2010.14.19%20AM%20(1).jpeg">
 </div>
 
 ## Demo
