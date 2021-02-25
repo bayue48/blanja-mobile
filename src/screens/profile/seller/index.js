@@ -80,7 +80,7 @@ class UserStore extends React.Component {
             </Text>
             <View style={{flexDirection: 'row', marginTop: 10}}>
               <Image
-                source={require('./../../../assets/profile.png')}
+                source={require('./../../../assets/mei.png')}
                 style={{
                   width: 80,
                   height: 80,
